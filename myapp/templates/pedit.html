@@ -1,0 +1,190 @@
+{% extends "sheader.html" %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<head>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{% static 'images/bg-01.jpg'%}');">
+		<h2 class="ltext-105 cl0 txt-center">
+			Edit Product
+		</h2>
+	</section>	
+
+<!-- Content page -->
+
+  <!-- Content page -->
+<section class="bg0 p-t-104 p-b-116" >
+    <div class="container" >
+        <div class="flex-w flex-tr justify-content-center">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                {% if msg %}
+                <div class="alert alert-success" role="alert">
+                    {{msg}}
+                  </div> 
+                  
+                {% elif msg1 %}
+                <div class="alert alert-danger" role="alert">
+                    {{msg1}}
+                  </div> 
+                {% endif %}
+                <form method="post" action="{% url 'pedit' pk=product.pk %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                    Edit Product
+                    </h4>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <select name="pcategory">
+                            <option>-----Select Category------</option>
+                            {% if product.pcategory == "Men" %}
+                            <option value="Men" selected>Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Child">Child</option>
+
+                            {% elif product.pcategory == "Women" %}
+                            <option value="Men">Men</option>
+                            <option value="Women" selected>Women</option>
+                            <option value="Child">Child</option>
+
+                            {% elif product.pcategory == "Child" %}
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Child" selected>Child</option>
+                            
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <select name="psize">
+                            <option>-----Select Size------</option>
+
+                            {% if product.psize == "S" %}
+                            <option value="S" selected>S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XLL">XLL</option>
+                            <option value="XLLL">XLLL</option>
+
+                            {% elif product.psize == "M" %}
+                            <option value="S">S</option>
+                            <option value="M" selected>M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XLL">XLL</option>
+                            <option value="XLLL">XLLL</option>
+
+                            {% elif product.psize == "L" %}
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L" selected>L</option>
+                            <option value="XL">XL</option>
+                            <option value="XLL">XLL</option>
+                            <option value="XLLL">XLLL</option>
+
+                            {% elif product.psize == "XL" %}
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL" selected>XL</option>
+                            <option value="XLL">XLL</option>
+                            <option value="XLLL">XLLL</option>
+                            
+                            {% elif product.psize == "XLL" %}
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XLL" selected>XLL</option>
+                            <option value="XLLL">XLLL</option>
+
+                            {% elif product.psize == "XLLL" %}
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XLL">XLL</option>
+                            <option value="XLLL" selected>XLLL</option>
+
+                            {%endif%}
+                        </select>
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <select name="pbrand">
+                            <option>-----Select Brand-----</option>
+
+                            {% if product.pbrand == "Levis" %}
+                            <option value="Levis" selected>Levis</option>
+                            <option value="Roadstar">Roadstar</option>
+                            <option value="Trands">Trands</option>
+                            <option value="Zudio">Zudio</option>
+                            <option value="Raymond">Raymond</option>
+
+                            {% elif product.pbrand == "Roadster" %}
+                            <option value="Levis">Levis</option>
+                            <option value="Roadstar" selected>Roadstar</option>
+                            <option value="Trands">Trands</option>
+                            <option value="Zudio">Zudio</option>
+                            <option value="Raymond">Raymond</option>
+
+                            {% elif product.pbrand == "Trands" %}
+                            <option value="Levis">Levis</option>
+                            <option value="Roadstar">Roadstar</option>
+                            <option value="Trands" selected>Trands</option>
+                            <option value="Zudio">Zudio</option>
+                            <option value="Raymond">Raymond</option>
+
+                            {% elif product.pbrand == "Zudio" %}
+                            <option value="Levis">Levis</option>
+                            <option value="Roadstar">Roadstar</option>
+                            <option value="Trands">Trands</option>
+                            <option value="Zudio" selected>Zudio</option>
+                            <option value="Raymond">Raymond</option>
+
+                            {% elif product.pbrand == "Raymond" %}
+                            <option value="Levis">Levis</option>
+                            <option value="Roadstar">Roadstar</option>
+                            <option value="Trands">Trands</option>
+                            <option value="Zudio">Zudio</option>
+                            <option value="Raymond" selected>Raymond</option>
+                            {%endif%}
+                        </select>
+                    </div>       
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number" name="price" value="{{product.price}}">
+                        
+                    </div>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <textarea class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="desc">{{product.desc}}</textarea>
+                        
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="pname" value="{{product.pname}}">
+                        
+                    </div>
+            
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <img src ="{{product.ppicture.url}}" style="hight:250px;width:250px;margin-left:90px;">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="file" name="ppicture">
+                        
+                    </div>
+                    
+                    
+                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
+                        Edit Product
+                    </button>
+                </form>
+            </div>
+
+            
+    </div>
+</section>
+
+    
+
+
+    
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "sheader.html" %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<head>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{% static 'images/bg-01.jpg'%}');">
+		<h2 class="ltext-105 cl0 txt-center">
+			Add Product
+		</h2>
+	</section>	
+
+<!-- Content page -->
+
+  <!-- Content page -->
+<section class="bg0 p-t-104 p-b-116" >
+    <div class="container" >
+        <div class="flex-w flex-tr justify-content-center">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                {% if msg %}
+                <div class="alert alert-success" role="alert">
+                    {{msg}}
+                  </div> 
+                  
+                {% elif msg1 %}
+                <div class="alert alert-danger" role="alert">
+                    {{msg1}}
+                  </div> 
+                {% endif %}
+                <form method="post" action="{% url 'add' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                    Add Product
+                    </h4>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <select name="pcategory">
+                            <option>-----Select Category------</option>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Child">Child</option>
+                        </select>
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <select name="psize">
+                            <option>-----Select Size------</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XLL">XLL</option>
+                            <option value="XLLL">XLLL</option>
+
+                        </select>
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <select name="pbrand">
+                            <option>-----Select Brand-----</option>
+                            <option value="Levis">Levis</option>
+                            <option value="Roadstar">Roadstar</option>
+                            <option value="Trands">Trands</option>
+                            <option value="Zudio">Zudio</option>
+                            <option value="Raymond">Raymond</option>
+                        </select>
+                    </div>       
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number" name="price" placeholder="Enter Price">
+                        
+                    </div>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <textarea class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="desc" placeholder="Enter Description"></textarea>
+                        
+                    </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="pname" placeholder="Enter Product Name">
+                        
+                    </div>
+            
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="file" name="ppicture">
+                        
+                    </div>
+                    
+                    
+                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
+                        Add Product
+                    </button>
+                </form>
+            </div>
+
+            
+    </div>
+</section>
+    
+{% endblock %}

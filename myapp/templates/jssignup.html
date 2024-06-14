@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Form</title>
+<style>
+    .error {
+        color: red;
+    }
+    .success {
+        color: green;
+    }
+</style>
+</head>
+<body>
+<h2>Signup Form</h2>
+<form id="signupForm" onsubmit="return validateForm()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br>
+    <span id="usernameError" class="error"></span><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br>
+    <span id="emailError" class="error"></span><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br>
+    <span id="passwordError" class="error"></span><br>
+
+    <input type="submit" value="Sign Up">
+</form>
+<p id="successMessage" class="success" style="display: none;">Signup successful!</p>
+<script>
+function validateForm() {
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var usernameError = document.getElementById("usernameError");
+    var emailError = document.getElementById("emailError");
+    var passwordError = document.getElementById("passwordError");
+    var successMessage = document.getElementById("successMessage");
+    var isValid = true;
+    // Validate username
+    if (username === "") {
+        usernameError.textContent = "Username is required";
+        isValid = false;
+    } else {
+        usernameError.textContent = "";
+    }
+    // Validate email
+    if (email === "") {
+        emailError.textContent = "Email is required";
+        isValid = false;
+    } else {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            emailError.textContent = "Invalid email format";
+            isValid = false;
+        } else {
+            emailError.textContent = "";
+        }
+    }
+    // Validate password
+    if (password === "") {
+        passwordError.textContent = "Password is required";
+        isValid = false;
+    } else {
+        if (password.length < 8) {
+            passwordError.textContent = "Password must be at least 8 characters long";
+            isValid = false;
+        } else {
+            passwordError.textContent = "";
+        }
+    }
+    // If all fields are valid, display success message
+    if (isValid) {
+        successMessage.style.display = "block";
+    } else {
+        successMessage.style.display = "none";
+    }
+    return isValid;
+}
+</script>
+</body>
+</html>
